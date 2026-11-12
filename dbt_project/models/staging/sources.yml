@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: raw
+    description: "Northwind tables loaded as-is from the source extract (no cleaning)."
+    schema: raw
+    tables:
+      - name: orders
+      - name: order_details
+      - name: products
+      - name: suppliers
+      - name: shippers

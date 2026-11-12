@@ -1,0 +1,8 @@
+supply_chain:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      # dbt runs from inside dbt_project/, so this points at ../warehouse/
+      path: ../warehouse/supply_chain.duckdb
+      threads: 4

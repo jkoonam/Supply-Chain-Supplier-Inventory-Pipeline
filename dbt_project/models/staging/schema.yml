@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: stg_orders
+    columns:
+      - name: order_id
+        tests: [unique, not_null]
+      - name: shipper_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_shippers')
+                field: shipper_id
+
+  - name: stg_order_details
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_orders')
+                field: order_id
+      - name: product_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_products')
+                field: product_id
+
+  - name: stg_products
+    columns:
+      - name: product_id
+        tests: [unique, not_null]
+      - name: supplier_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_suppliers')
+                field: supplier_id
+
+  - name: stg_suppliers
+    columns:
+      - name: supplier_id
+        tests: [unique, not_null]
+
+  - name: stg_shippers
+    columns:
+      - name: shipper_id
+        tests: [unique, not_null]

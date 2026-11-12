@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: mart_shipping_performance
+    description: "Late-delivery rate and time-to-ship per shipping company. Shipped orders only."
+    columns:
+      - name: shipper_name
+        tests: [unique, not_null]
+      - name: late_rate_pct
+        tests: [not_null]
+
+  - name: mart_supplier_inventory_risk
+    description: "Share of active products at or below reorder level, per supplier."
+    columns:
+      - name: supplier_name
+        tests: [unique, not_null]
+      - name: pct_products_at_risk
+        tests: [not_null]
